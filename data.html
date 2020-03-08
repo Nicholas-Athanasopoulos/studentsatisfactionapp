@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <a href="home.html">Back</a>
+        <h1 class=title>Data</h1>
+        <p>Data is listed below</p>
+
+        <table class="table table-bordered table-striped" id="satisfaction_table">
+            <tr>
+                <th>Satisfaction</th>
+                <th>Classroom</th>
+                <th>Time</th>
+            </tr>
+
+        </table>
+    </div>
+</body>
+
+</html>
+<script>
+    var secondurl = 'http://localhost:3000/allfeedback';
+
+    $(document).ready(function () {
+        $.getJSON(secondurl, function (data) {
+            var satisfaction_data = '';
+            $.each(data, function (key, value) {
+                satisfaction_data += '<tr>';
+                satisfaction_data += '<td>' + value.satisfaction + '</td>';
+                satisfaction_data += '<td>' + value.classroom + '</td>';
+                satisfaction_data += '<td>' + value.dateandtime + '</td>';
+                satisfaction_data += '</tr>';
+            });
+            $('#satisfaction_table').append(satisfaction_data);
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // $(document).ready(function () {
+    //     $("button").click(function () {
+    //         console.log("Clicked");
+    //         $.getJSON(secondurl, function (data) {
+    //             $.each(data, function (i, field) {
+    //                 $("display").append(field + " ");
+    //             });
+    //         });
+    //     });
+    // });
+
+</script>

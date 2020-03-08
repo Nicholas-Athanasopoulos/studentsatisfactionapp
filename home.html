@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Satisfaction App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1 id="title">How would you rate your learning experience?</h1>
+    <br>
+
+    <div id="message"></div>
+
+    <img src="images/happyface.svg" id="happy" height="200px" width="200px" onclick="happy();">
+
+    <img src="images/neutralface.png" id="neutral" height="200px" width="200px" onclick="neutral();">
+
+    <img src="images/sadface.png" id="sad" height="200px" width="200px" onclick="sad();">
+
+    <a href="data.html">View Data</a>
+
+<!-- 
+    <script src="satisfaction.js"></script>
+    <script src="app.js"></script>
+    <script src="routes.js"></script> -->
+
+    
+    <br>
+    <div id="divclassroom">
+        <label for="classroomlabel">Classroom:</label>
+        <input id="classroom" type="text" name="classroom" placeholder="Enter Classroom Here">
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function submitForm(satisfaction, classroom, dateandtime) {
+        document.getElementById("form1").submit();
+    }
+
+    function validateForm() {
+        var x = document.forms["form1"]["classroom"].value;
+        if (x == "") {
+            alert("Name must be filled out");
+            return false;
+        }
+    }
+
+
+    var url = 'http://localhost:3000/addfeedback';
+
+    function happy() {
+        console.log('Happy');
+        console.log(document.getElementById('classroom').value);
+        $.post(url, {
+            satisfaction: 'Happy',
+            classroom: document.getElementById('classroom').value,
+            dateandtime: 'testdata'
+        }).done(function (response) {
+            console.log("success");
+            $('#message').html(response);
+        });
+    }
+
+    function neutral() {
+        console.log('Neutral');
+        console.log(document.getElementById('classroom').value);
+        $.post(url, {
+            satisfaction: 'Neutral',
+            classroom: document.getElementById('classroom').value,
+            dateandtime: 'test time'
+        }).done(function (response) {
+            console.log("success");
+            $('#message').html(response);
+        })
+    }
+
+
+    function sad() {
+        console.log('Sad');
+        console.log(document.getElementById('classroom').value);
+        $.post(url, {
+            satisfaction: 'Sad',
+            classroom: document.getElementById('classroom').value,
+            dateandtime: 'test'
+        }).done(function (response) {
+            console.log("success");
+            $('#message').html(response);
+        })
+    }
+
+</script>

@@ -1,0 +1,41 @@
+.body{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+img{
+    padding: 20px;;
+    position: relative;
+
+}
+
+#happy{
+    padding-left: 17%;
+}
+
+#divclassroom{
+    position: absolute;
+    top: 70%;
+    left: 40%;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+#message {
+   color: green;
+   font-size: xx-large;
+   font-style: oblique;
+   font-weight: bold;
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   text-align: center;
+}
